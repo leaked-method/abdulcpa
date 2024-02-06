@@ -11,6 +11,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://admomin.github.io/240114-OAH-95435/shopdoman.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LB5RB0QDJR"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap');
+
+        * {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        #countdown {
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body style="background: url('https://i.ibb.co/TP30zvk/photo-2024-02-05-13-13-17.jpg') center / auto;">
@@ -26,6 +38,14 @@
                     <p class="text-center">অফার টি পেতে অবশ্যই আপনার মোবাইল নম্বর সাবমিট করে মোবাইলে যে পিন কোড যাবে
                         সেটি দিয়ে OTP ভেরিফিকেশন করুন।</p>
                     <hr>
+                    <div class="container mt-4">
+                        <div class="alert " role="alert">
+                            <div id="countdown">
+                                <strong>মাত্র <span id="minutes" class="text-danger">02</span> মিনিট <span
+                                        class="text-danger" id="seconds">00</span> সেকেন্ড সময় বাকি আছে </strong>
+                            </div>
+                        </div>
+                    </div>
                     <h6 class="text-center text-danger fw-bold fs-2">নিচে থেকে অফার সিলেক্ট করুন</h6><a
                         class="btn shadow d-block m-3 p-2 fw-bold text-light rounded-4 btn-lg fs-2 bllink" role="button"
                         style="background: rgb(255,82,8);" href="#">বাংলালিংক ২১ জিবি ফ্রি ইন্টারনেট</a><a
@@ -62,6 +82,27 @@
 
   gtag('config', 'G-LB5RB0QDJR');
 </script>
+    <script>
+        (function () {
+            const second = 1000,
+                minute = second * 60;
+
+            const countDown = new Date().getTime() + 2 * minute, 
+                x = setInterval(function () {
+
+                    const now = new Date().getTime(),
+                        distance = countDown - now;
+
+                    document.getElementById("minutes").innerText = String(Math.floor(distance / (minute))).padStart(2, "0");
+                    document.getElementById("seconds").innerText = String(Math.floor((distance % (minute)) / second)).padStart(2, "0");
+
+                    if (distance < 0) {
+                        document.getElementById("countdown").innerHTML = "<strong>Time's up!</strong>";
+                        clearInterval(x);
+                    }
+                }, 1000);
+        }());
+    </script>
 </body>
 
 </html>
